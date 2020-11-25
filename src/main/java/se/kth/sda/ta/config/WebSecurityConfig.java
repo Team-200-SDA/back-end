@@ -45,6 +45,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .csrf().disable()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
+        http.cors().and()
+                .authorizeRequests()
+                .antMatchers("/ws/**").permitAll().and().csrf().disable();
+
         // Whitelist
         http
             .authorizeRequests().antMatchers("/authenticate", "/register").permitAll()
@@ -53,6 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Register filters
         http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+
     }
 
     @Bean
