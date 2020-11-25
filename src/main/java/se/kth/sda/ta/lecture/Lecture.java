@@ -11,15 +11,15 @@ public class Lecture {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String body;
+    private String link;
 
     public Lecture() {
     }
 
-    public Lecture(Long id, String title, String body) {
+    public Lecture(Long id, String title, String link) {
         this.id = id;
         this.title = title;
-        this.body = body;
+        this.link = link;
     }
 
     public Long getId() {
@@ -38,11 +38,11 @@ public class Lecture {
         this.title = title;
     }
 
-    public String getBody() {
-        return body;
+    public String getLink() {
+        return link;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setLink(String link) {
+        this.link = link;
     }
 }
