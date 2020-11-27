@@ -1,10 +1,10 @@
 package se.kth.sda.ta.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import se.kth.sda.ta.auth.AuthService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -19,9 +19,38 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping("/all")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
     @GetMapping("")
     public User getLoggedInUser(){
         String LoggedInUserEmail = authService.getLoggedInUserEmail();
         return userService.findUserByEmail(LoggedInUserEmail);
     }
+    @PutMapping("/address")
+    public User updateAddress(@RequestParam String address) {
+        String loggedInUserEmail = authService.getLoggedInUserEmail();
+        User loggedInUser = userService.findUserByEmail(loggedInUserEmail);
+        loggedInUser.setAddress(address);
+        return userService.updateAddress(loggedInUser);
+    }
+    @PutMapping("/phoneno")
+    public User updatePhoneno(@RequestParam String phoneno) {
+        String loggedInUserEmail = authService.getLoggedInUserEmail();
+        User loggedInUser = userService.findUserByEmail(loggedInUserEmail);
+        loggedInUser.setPhoneno(phoneno);
+        return userService.updatePhoneno(loggedInUser);
+    }
+
+    @PutMapping("/profilepic")
+    public User updateProfilepic(@RequestParam String profilepic) {
+        String loggedInUserEmail = authService.getLoggedInUserEmail();
+        User loggedInUser = userService.findUserByEmail(loggedInUserEmail);
+        loggedInUser.setProfilepic(profilepic);
+        return userService.updateProfilepic(loggedInUser);
+
+    }
+
 }
