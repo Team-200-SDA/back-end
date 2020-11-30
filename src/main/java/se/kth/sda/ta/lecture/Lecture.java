@@ -1,11 +1,9 @@
 package se.kth.sda.ta.lecture;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table
 public class Lecture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
