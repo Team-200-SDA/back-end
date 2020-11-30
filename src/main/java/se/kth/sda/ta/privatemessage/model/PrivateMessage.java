@@ -9,21 +9,19 @@ public class PrivateMessage {
 
     @Id
     private String id;
-    private String message;
-    private String sender;
-    private String receiver;
-    private String channelId;
-    private boolean senderSubbed;
-    private boolean receiverSubbed;
+    private String content;
+    private String senderName;
+    private String senderEmail;
+    private String receiverName;
+    private String receiverEmail;
 
-    public PrivateMessage(String id, String message, String sender, String receiver, String channelId, boolean senderSubbed, boolean receiverSubbed) {
+    public PrivateMessage(String id, String content, String senderName, String senderEmail, String receiverName, String receiverEmail) {
         this.id = id;
-        this.message = message;
-        this.sender = sender;
-        this.receiver = receiver;
-        this.channelId = channelId;
-        this.senderSubbed = senderSubbed;
-        this.receiverSubbed = receiverSubbed;
+        this.content = content;
+        this.senderName = senderName;
+        this.senderEmail = senderEmail;
+        this.receiverName = receiverName;
+        this.receiverEmail = receiverEmail;
     }
 
     public String getId() {
@@ -34,51 +32,44 @@ public class PrivateMessage {
         this.id = id;
     }
 
-    public String getMessage() {
-        return message;
+    public String getContent() {
+        return content;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String getSender() {
-        return sender;
+    public String getSenderName() {
+        return senderName;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
     }
 
-    public String getReceiver() {
-        return receiver;
+    public String getSenderEmail() {
+        return senderEmail;
     }
 
-    public void setReceiver(String receiver) {
-        this.receiver = receiver;
+    public void setSenderEmail(String senderEmail) {
+        this.senderEmail = senderEmail;
     }
 
-    public String getChannelId() {
-        return channelId;
+    public String getReceiverName() {
+        return receiverName;
     }
 
-    public void setChannelId(String channelId) {
-        this.channelId = channelId;
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
     }
 
-    public boolean isSenderSubbed() {
-        return senderSubbed;
+    public String getReceiverEmail() {
+        return receiverEmail;
     }
 
-    public void setSenderSubbed(boolean senderSubbed) {
-        this.senderSubbed = senderSubbed;
-    }
-
-    public boolean isReceiverSubbed() {
-        return receiverSubbed;
-    }
-
-    public void setReceiverSubbed(boolean receiverSubbed) {
-        this.receiverSubbed = receiverSubbed;
+    public void setReceiverEmail(String receiverEmail) {
+        this.receiverEmail = receiverEmail;
     }
 }
+

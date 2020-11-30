@@ -1,6 +1,6 @@
-package se.kth.sda.ta.chat.model;
+package se.kth.sda.ta.globalchat.model;
 
-public class ChatMessage {
+public class Chat {
     private MessageType type;
     private String content;
     private String sender;
