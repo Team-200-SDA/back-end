@@ -36,7 +36,10 @@ public class PrivateMessageService {
                 message.getReceiverName(),
                 message.getReceiverEmail(),
                 message.getSenderName(),
-                message.getSenderEmail());
+                message.getSenderEmail(),
+                message.getDate()
+                );
+
         // Save the duplicate to the repo
         privateMessageRepository.save(duplicate).toProcessor();
         // Save the original message to the repo, toProcessor will sub and return the Mono.
