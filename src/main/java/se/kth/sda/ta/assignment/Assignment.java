@@ -1,20 +1,20 @@
-package se.kth.sda.ta.lecture;
+package se.kth.sda.ta.assignment;
 
 import javax.persistence.*;
 
 @Entity
 @Table
-public class Lecture {
+public class Assignment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String link;
 
-    public Lecture() {
+    public Assignment() {
     }
 
-    public Lecture(Long id, String title, String link) {
+    public Assignment(Long id, String title, String link) {
         this.id = id;
         this.title = title;
         this.link = link;
