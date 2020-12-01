@@ -27,14 +27,23 @@ public class AssignmentController {
 
     // If you are a teacher, you will get all assignments. If you are a student, you will only get
     // assignments you submitted.
+//    @GetMapping("")
+//    public List<Assignment> getAll() {
+//        User loggedInUser = userService.findUserByEmail(authService.getLoggedInUserEmail());
+//        if (loggedInUser.getRole().equalsIgnoreCase("teacher")) {
+//            return assignmentService.getAll();
+//        } else {
+//            return assignmentService.findAllByUser(loggedInUser);
+//        }
+//    }
+
     @GetMapping("")
     public List<Assignment> getAll() {
         User loggedInUser = userService.findUserByEmail(authService.getLoggedInUserEmail());
-        if (loggedInUser.getRole().equalsIgnoreCase("teacher")) {
-            return assignmentService.getAll();
-        } else {
+        if (loggedInUser.getRole().equalsIgnoreCase("student")) {
             return assignmentService.findAllByUser(loggedInUser);
         }
+        return null;
     }
 
     @GetMapping("/{id}")
