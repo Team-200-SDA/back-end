@@ -15,6 +15,7 @@ import se.kth.sda.ta.user.UserService;
 
 import javax.validation.Valid;
 import java.time.Duration;
+import java.util.Date;
 
 @RestController
 public class PrivateMessageController {
@@ -53,6 +54,7 @@ public class PrivateMessageController {
                                 null,
                                 null,
                                 null,
-                                null)));
+                                null,
+                                new Date().toString())));
     }
 }

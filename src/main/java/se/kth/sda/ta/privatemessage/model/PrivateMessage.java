@@ -14,14 +14,16 @@ public class PrivateMessage {
     private String senderEmail;
     private String receiverName;
     private String receiverEmail;
+    private String date;
 
-    public PrivateMessage(String id, String content, String senderName, String senderEmail, String receiverName, String receiverEmail) {
+    public PrivateMessage(String id, String content, String senderName, String senderEmail, String receiverName, String receiverEmail, String date) {
         this.id = id;
         this.content = content;
         this.senderName = senderName;
         this.senderEmail = senderEmail;
         this.receiverName = receiverName;
         this.receiverEmail = receiverEmail;
+        this.date = date;
     }
 
     public String getId() {
@@ -70,6 +72,14 @@ public class PrivateMessage {
 
     public void setReceiverEmail(String receiverEmail) {
         this.receiverEmail = receiverEmail;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }
 
