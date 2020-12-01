@@ -37,7 +37,8 @@ public class PrivateMessageService {
                 message.getReceiverEmail(),
                 message.getSenderName(),
                 message.getSenderEmail(),
-                message.getDate()
+                message.getDate(),
+                message.getAuthor()
                 );
 
         // Save the duplicate to the repo
