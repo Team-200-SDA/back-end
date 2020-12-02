@@ -8,7 +8,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/news")
+@RequestMapping("/")
 public class NewsController {
     @Autowired
     private NewsService newsService;
