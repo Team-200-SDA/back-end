@@ -11,7 +11,7 @@ public class AsyncConfig implements WebMvcConfigurer {
     @Override
     public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
         final ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(2); // Testing 2 for merge error.
+        executor.setCorePoolSize(1);
         executor.setMaxPoolSize(10); // This might be overkill. Can't figure out how threads are allocated to mongo streams. It's not 1:1 🤷‍️
         executor.setThreadNamePrefix("mongo-flux-stream-");
         executor.initialize();

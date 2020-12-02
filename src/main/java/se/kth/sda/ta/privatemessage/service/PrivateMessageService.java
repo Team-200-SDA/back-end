@@ -11,7 +11,6 @@ import se.kth.sda.ta.user.User;
 import se.kth.sda.ta.user.UserRepository;
 
 import javax.validation.Valid;
-import java.time.Duration;
 
 @Service
 public class PrivateMessageService {
@@ -29,7 +28,8 @@ public class PrivateMessageService {
         // Find receiver by Email and set receiver name
         User receiver = userRepository.findByEmail(message.getReceiverEmail());
         message.setReceiverName(receiver.getName());
-        // Create copy for receiver (Flip the sender and receiver)
+        message.setSubscribed(true);
+        // Create deep of the message object for the receiver ( AND! - Flip the sender and receiver)
         PrivateMessage duplicate = new PrivateMessage(
                 null,
                 message.getContent(),
@@ -38,9 +38,9 @@ public class PrivateMessageService {
                 message.getSenderName(),
                 message.getSenderEmail(),
                 message.getDate(),
-                message.getAuthor()
-                );
-
+                message.getAuthor(),
+                message.isSubscribed()
+        );
         // Save the duplicate to the repo
         privateMessageRepository.save(duplicate).toProcessor();
         // Save the original message to the repo, toProcessor will sub and return the Mono.
@@ -49,11 +49,16 @@ public class PrivateMessageService {
 
     // Stream messages from the repo with email in sender field.
     public Flux<PrivateMessage> streamMessagesFromRepo(String senderEmail) {
-        return privateMessageRepository.findWithTailableCursorBySenderEmail(senderEmail);
-
+        return privateMessageRepository.findWithTailableCursorBySenderEmailAndSubscribedIsTrue(senderEmail);
     }
 
+    // As we can't delete documents in a capped collection. We set it to unsub the message owner from the
+    // message and save it back into the repo, overwriting the original while keeping byte size the same.
+    // toProcessor() is called again to make sure the "new" document is tracked.
     public void delete(String id) {
-        privateMessageRepository.deleteById(id);
+        privateMessageRepository.findById(id).flatMap(message -> {
+            message.setSubscribed(false);
+            return privateMessageRepository.save(message);
+        }).toProcessor();
     }
 }

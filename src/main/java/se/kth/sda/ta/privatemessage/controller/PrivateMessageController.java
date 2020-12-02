@@ -15,9 +15,9 @@ import se.kth.sda.ta.user.UserService;
 
 import javax.validation.Valid;
 import java.time.Duration;
-import java.util.Date;
 
 @RestController
+@RequestMapping("/message")
 public class PrivateMessageController {
 
     private final PrivateMessageService privateMessageService;
@@ -31,7 +31,7 @@ public class PrivateMessageController {
         this.userService = userService;
     }
 
-    @PostMapping("/message")
+    @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<PrivateMessage> postMessage(@Valid @RequestBody PrivateMessage message) {
         // Set sender details in backend to avoid shenanigans
@@ -43,24 +43,22 @@ public class PrivateMessageController {
     }
 
     // Stream messages with your email address in sender field.
-    @GetMapping(value = "/message/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<PrivateMessage> streamMessages() {
         return privateMessageService.streamMessagesFromRepo(authService.getLoggedInUserEmail())
                 // Merge with an 40 second interval flux stream to keep client alive.
                 .mergeWith(Flux.interval(Duration.ofSeconds(40), Duration.ofSeconds(40))
-                .map(ignored ->
-                        new PrivateMessage("heartbeat",
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                new Date().toString(),
-                                null)));
+                        .map(ignored ->
+                        {
+                            PrivateMessage heartbeat = new PrivateMessage();
+                            heartbeat.setId("heartbeat");
+                            return heartbeat;
+                        }));
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable String id){
+    @DeleteMapping(value = "/{id}")
+    public void delete(@PathVariable String id) {
+        System.out.println(id);
         privateMessageService.delete(id);
     }
 }
