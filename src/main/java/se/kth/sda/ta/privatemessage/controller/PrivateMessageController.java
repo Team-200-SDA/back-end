@@ -59,7 +59,7 @@ public class PrivateMessageController {
                                 null)));
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable String id){
         privateMessageService.delete(id);
     }
