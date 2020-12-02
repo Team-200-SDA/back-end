@@ -38,6 +38,7 @@ public class PrivateMessageController {
         User loggedInUser = userService.findUserByEmail(authService.getLoggedInUserEmail());
         message.setSenderEmail(loggedInUser.getEmail());
         message.setSenderName(loggedInUser.getName());
+        message.setAuthor(loggedInUser.getName());
         return privateMessageService.postMessage(message);
     }
 
@@ -55,6 +56,7 @@ public class PrivateMessageController {
                                 null,
                                 null,
                                 null,
-                                new Date().toString())));
+                                new Date().toString(),
+                                null)));
     }
 }
