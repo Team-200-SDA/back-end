@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service()
 public class UserService {
@@ -24,7 +26,8 @@ public class UserService {
         userRepository.save(user);
     }
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        List<User> userList = userRepository.findAll();
+        return userList.stream().sorted().sorted(Comparator.comparing(User::getName)).collect(Collectors.toList());
     }
 
     public User updateAddress(User updatedUser) {
