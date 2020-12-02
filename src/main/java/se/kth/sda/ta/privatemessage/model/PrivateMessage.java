@@ -15,8 +15,9 @@ public class PrivateMessage {
     private String receiverName;
     private String receiverEmail;
     private String date;
+    private String author;
 
-    public PrivateMessage(String id, String content, String senderName, String senderEmail, String receiverName, String receiverEmail, String date) {
+    public PrivateMessage(String id, String content, String senderName, String senderEmail, String receiverName, String receiverEmail, String date, String author) {
         this.id = id;
         this.content = content;
         this.senderName = senderName;
@@ -24,6 +25,7 @@ public class PrivateMessage {
         this.receiverName = receiverName;
         this.receiverEmail = receiverEmail;
         this.date = date;
+        this.author = author;
     }
 
     public String getId() {
@@ -80,6 +82,14 @@ public class PrivateMessage {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }
 
