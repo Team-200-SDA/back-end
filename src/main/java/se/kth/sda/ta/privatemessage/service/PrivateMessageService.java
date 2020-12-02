@@ -52,4 +52,8 @@ public class PrivateMessageService {
         return privateMessageRepository.findWithTailableCursorBySenderEmail(senderEmail);
 
     }
+
+    public void delete(String id) {
+        privateMessageRepository.deleteById(id);
+    }
 }

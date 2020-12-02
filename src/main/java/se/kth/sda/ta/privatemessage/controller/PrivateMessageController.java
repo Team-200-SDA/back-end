@@ -43,7 +43,6 @@ public class PrivateMessageController {
     }
 
     // Stream messages with your email address in sender field.
-    @CrossOrigin(allowedHeaders = "*")
     @GetMapping(value = "/message/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<PrivateMessage> streamMessages() {
         return privateMessageService.streamMessagesFromRepo(authService.getLoggedInUserEmail())
@@ -58,5 +57,10 @@ public class PrivateMessageController {
                                 null,
                                 new Date().toString(),
                                 null)));
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable String id){
+        privateMessageService.delete(id);
     }
 }
