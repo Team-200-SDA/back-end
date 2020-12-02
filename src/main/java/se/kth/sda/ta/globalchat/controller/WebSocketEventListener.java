@@ -1,4 +1,4 @@
-package se.kth.sda.ta.chat.controller;
+package se.kth.sda.ta.globalchat.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +8,7 @@ import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
-import se.kth.sda.ta.chat.model.ChatMessage;
+import se.kth.sda.ta.globalchat.model.Chat;
 
 public class WebSocketEventListener {
 
@@ -30,11 +30,11 @@ public class WebSocketEventListener {
         if (username != null) {
             logger.info("User Disconnected : " + username);
 
-            ChatMessage chatMessage = new ChatMessage();
-            chatMessage.setType(ChatMessage.MessageType.LEAVE);
-            chatMessage.setSender(username);
+            Chat chat = new Chat();
+            chat.setType(Chat.MessageType.LEAVE);
+            chat.setSender(username);
 
-            messagingTemplate.convertAndSend("/topic/public", chatMessage);
+            messagingTemplate.convertAndSend("/topic/public", chat);
         }
     }
 }

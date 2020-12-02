@@ -39,6 +39,17 @@ public class User {
     @Column(name="phoneno")
     private String phoneno;
 
+    @Column(name="role")
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public String getPhoneno() {
         return phoneno;
     }

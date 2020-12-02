@@ -1,28 +1,28 @@
-package se.kth.sda.ta.chat.controller;
+package se.kth.sda.ta.globalchat.controller;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
-import se.kth.sda.ta.chat.model.ChatMessage;
+import se.kth.sda.ta.globalchat.model.Chat;
 
 @Controller
 public class ChatController {
 
     @MessageMapping("/chat.sendMessage")
     @SendTo("/topic/public")
-    public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
-        return chatMessage;
+    public Chat sendMessage(@Payload Chat chat) {
+        return chat;
     }
 
     @MessageMapping("/chat.addUser")
     @SendTo("/topic/public")
-    public ChatMessage addUser(@Payload ChatMessage chatMessage,
-                               SimpMessageHeaderAccessor headerAccessor) {
+    public Chat addUser(@Payload Chat chat,
+                        SimpMessageHeaderAccessor headerAccessor) {
         // Add username in web socket session
-        headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
-        return chatMessage;
+        headerAccessor.getSessionAttributes().put("username", chat.getSender());
+        return chat;
     }
 
 }

@@ -2,6 +2,7 @@ package se.kth.sda.ta.assignment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.kth.sda.ta.user.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,9 +16,18 @@ public class AssignmentService {
         return repository.findAll();
     }
 
+    public List<Assignment> findAllByUser(User user) {
+        return repository.findAllByUser(user);
+    }
+
+    public List<Assignment> findByUserRole(String role){
+        return repository.findAllByUser_Role(role);
+    }
+
     public Optional<Assignment> getById(Long id) {
         return repository.findById(id);
     }
+
 
     public Assignment create(Assignment newAssignment) {
         return repository.save(newAssignment);

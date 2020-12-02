@@ -1,5 +1,7 @@
 package se.kth.sda.ta.assignment;
 
+import se.kth.sda.ta.user.User;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +13,9 @@ public class Assignment {
     private String title;
     private String link;
 
+    @ManyToOne
+    private User user;
+
     public Assignment() {
     }
 
@@ -18,6 +23,14 @@ public class Assignment {
         this.id = id;
         this.title = title;
         this.link = link;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Long getId() {
