@@ -16,8 +16,9 @@ public class PrivateMessage {
     private String receiverEmail;
     private String date;
     private String author;
+    private boolean subscribed;
 
-    public PrivateMessage(String id, String content, String senderName, String senderEmail, String receiverName, String receiverEmail, String date, String author) {
+    public PrivateMessage(String id, String content, String senderName, String senderEmail, String receiverName, String receiverEmail, String date, String author, boolean subscribed) {
         this.id = id;
         this.content = content;
         this.senderName = senderName;
@@ -26,6 +27,10 @@ public class PrivateMessage {
         this.receiverEmail = receiverEmail;
         this.date = date;
         this.author = author;
+        this.subscribed = subscribed;
+    }
+
+    public PrivateMessage() {
     }
 
     public String getId() {
@@ -90,6 +95,29 @@ public class PrivateMessage {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public boolean isSubscribed() {
+        return subscribed;
+    }
+
+    public void setSubscribed(boolean subscribed) {
+        this.subscribed = subscribed;
+    }
+
+    // To string for debugging
+    @Override
+    public String toString() {
+        return "PrivateMessage{" +
+                "id='" + id + '\'' +
+                ", content='" + content + '\'' +
+                ", senderName='" + senderName + '\'' +
+                ", senderEmail='" + senderEmail + '\'' +
+                ", receiverName='" + receiverName + '\'' +
+                ", receiverEmail='" + receiverEmail + '\'' +
+                ", date='" + date + '\'' +
+                ", author='" + author + '\'' +
+                '}';
     }
 }
 

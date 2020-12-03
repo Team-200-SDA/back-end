@@ -7,7 +7,7 @@ import se.kth.sda.ta.privatemessage.model.PrivateMessage;
 
 public interface PrivateMessageRepository extends ReactiveMongoRepository<PrivateMessage, String> {
     // Open a stream to mongoDB and monitor changes. This is asynchronous.
+    // Would you look at that method name... 👀
     @Tailable
-    Flux<PrivateMessage> findWithTailableCursorBySenderEmail(String senderEmail);
-
+    Flux<PrivateMessage> findWithTailableCursorBySenderEmailAndSubscribedIsTrue(String senderEmail);
 }
