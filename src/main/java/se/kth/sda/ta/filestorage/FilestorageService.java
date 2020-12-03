@@ -2,6 +2,7 @@ package se.kth.sda.ta.filestorage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.kth.sda.ta.user.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +14,10 @@ public class FilestorageService {
 
     public List<Filestorage> getAll() {
         return repository.findAll();
+    }
+
+    public List<Filestorage> findAllByUser(User user){
+        return repository.findAllByUser(user);
     }
 
     public Optional<Filestorage> getById(Long id) {
