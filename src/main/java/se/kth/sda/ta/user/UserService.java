@@ -26,8 +26,7 @@ public class UserService {
         userRepository.save(user);
     }
     public List<User> getAllUsers() {
-        List<User> userList = userRepository.findAll();
-        return userList.stream().sorted().sorted(Comparator.comparing(User::getName)).collect(Collectors.toList());
+        return userRepository.findAll();
     }
 
     public User updateAddress(User updatedUser) {
