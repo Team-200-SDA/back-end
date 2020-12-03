@@ -9,8 +9,13 @@ import java.util.Optional;
 
 @Service
 public class FilestorageService {
+
+    private final FilestorageRepo repository;
+
     @Autowired
-    private FilestorageRepo repository;
+    public FilestorageService(FilestorageRepo repository) {
+        this.repository = repository;
+    }
 
     public List<Filestorage> getAll() {
         return repository.findAll();
