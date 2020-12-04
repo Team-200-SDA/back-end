@@ -2,17 +2,27 @@ package se.kth.sda.ta.filestorage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.kth.sda.ta.user.User;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class FilestorageService {
+
+    private final FilestorageRepo repository;
+
     @Autowired
-    private FilestorageRepo repository;
+    public FilestorageService(FilestorageRepo repository) {
+        this.repository = repository;
+    }
 
     public List<Filestorage> getAll() {
         return repository.findAll();
+    }
+
+    public List<Filestorage> findAllByUser(User user){
+        return repository.findAllByUser(user);
     }
 
     public Optional<Filestorage> getById(Long id) {
