@@ -50,8 +50,7 @@ public class CommentController {
 
     @PutMapping("")
     public Comment update(@RequestBody Comment updatedComment){
-        //extractUserFromAuth());
-        //TODO: check if current user is owner of the comment
+
         updatedComment.setUser(extractUserFromAuth());
         return commentService.update(updatedComment);
     }
@@ -61,7 +60,6 @@ public class CommentController {
         commentService.delete(id);
     }
 
-    //extracting information about the user from current session (not from front end)
     public User extractUserFromAuth()
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

@@ -5,18 +5,14 @@ import se.kth.sda.ta.user.User;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "post")
 public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id")
     private Long id;
 
-    @Column(name = "title")
     private String title;
 
-    @Column(name = "body")
     private String body;
 
     @ManyToOne

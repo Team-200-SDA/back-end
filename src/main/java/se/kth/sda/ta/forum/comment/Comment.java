@@ -7,16 +7,13 @@ import javax.persistence.*;
 
 
 @Entity
-@Table (name = "comment")
 public class Comment {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id")
     private Long id;
 
-    @Column(name = "body")
     private String body;
 
     @ManyToOne
@@ -67,4 +64,5 @@ public class Comment {
     public void setPost(Post post) {
         this.post = post;
     }
+
 }

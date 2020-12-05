@@ -13,7 +13,6 @@ import se.kth.sda.ta.user.User;
 import se.kth.sda.ta.user.UserService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/posts")
@@ -45,8 +44,7 @@ public class PostController {
 
     @PutMapping("")
     public Post update(@RequestBody Post updatedPost){
-        //TODO: check if current user is owner of the post
-        //compare current user and based on postID user of the post
+
         updatedPost.setUser(extractUserFromAuth());
         return postService.update(updatedPost);
     }
@@ -56,7 +54,7 @@ public class PostController {
         postService.delete(id);
     }
 
-    //extracting information about the user from current session (not from front end)
+
     public User extractUserFromAuth()
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
