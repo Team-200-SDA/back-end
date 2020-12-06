@@ -13,15 +13,17 @@ public class Filestorage {
     private String fileName;
     private String link;
     private String publicId;
+    private String type;
 
     @ManyToOne
     private User user;
 
-    public Filestorage(Long id, String fileName, String link, String publicId, User user) {
+    public Filestorage(Long id, String fileName, String link, String publicId, String type, User user) {
         this.id = id;
         this.fileName = fileName;
         this.link = link;
         this.publicId = publicId;
+        this.type = type;
         this.user = user;
     }
 
@@ -66,5 +68,13 @@ public class Filestorage {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
