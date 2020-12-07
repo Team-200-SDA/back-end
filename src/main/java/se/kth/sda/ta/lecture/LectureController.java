@@ -4,14 +4,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import se.kth.sda.ta.auth.AuthService;
+import se.kth.sda.ta.user.User;
+import se.kth.sda.ta.user.UserService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/lectures")
 public class LectureController {
+
+    private final LectureService lectureService;
+    private final UserService userService;
+    private final AuthService authService;
+
     @Autowired
-    private LectureService lectureService;
+    public LectureController(LectureService lectureService, UserService userService, AuthService authService) {
+        this.lectureService = lectureService;
+        this.userService = userService;
+        this.authService = authService;
+    }
 
     @GetMapping("")
     public List<Lecture> getAll() {
@@ -24,6 +36,8 @@ public class LectureController {
     }
     @PostMapping("")
     public Lecture create(@RequestBody Lecture newLecture) {
+        User loggedInUser = userService.findUserByEmail(authService.getLoggedInUserEmail());
+        newLecture.setUser(loggedInUser);
         return lectureService.create(newLecture);
     }
     @PutMapping("")
