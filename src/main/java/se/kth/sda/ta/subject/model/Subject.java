@@ -20,13 +20,17 @@ public class Subject {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
+    @Column(name = "link")
+    private String link;
+
     @OneToMany(mappedBy = "subject", cascade = CascadeType.REMOVE)
     private List<Lecture> lectures;
 
-    public Subject(Long id, String name, String description) {
+    public Subject(Long id, String name, String description, String link) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.link = link;
     }
 
     public Subject() {
@@ -48,11 +52,6 @@ public class Subject {
         this.name = name;
     }
 
-    @JsonManagedReference
-    public List<Lecture> getLectures() {
-        return lectures;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -61,7 +60,13 @@ public class Subject {
         this.description = description;
     }
 
-    public void setLectures(List<Lecture> lectures) {
-        this.lectures = lectures;
+    public String getLink() {
+        return link;
     }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+
 }

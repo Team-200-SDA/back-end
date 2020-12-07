@@ -30,14 +30,12 @@ public class LectureController {
         return lectureService.getAll();
     }
     @GetMapping("/{id}")
-    public Lecture getById(@PathVariable Long id) {
-        return lectureService.getById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public List<Lecture> getAllBySubjectId(@PathVariable Long id) {
+        return lectureService.getAllBySubjectId(id);
     }
     @PostMapping("")
     public Lecture create(@RequestBody Lecture newLecture) {
         User loggedInUser = userService.findUserByEmail(authService.getLoggedInUserEmail());
-        newLecture.setUser(loggedInUser);
         return lectureService.create(newLecture);
     }
     @PutMapping("")
