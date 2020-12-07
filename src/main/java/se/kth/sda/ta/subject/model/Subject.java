@@ -17,12 +17,16 @@ public class Subject {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "description", columnDefinition = "TEXT")
+    private String description;
+
     @OneToMany(mappedBy = "subject", cascade = CascadeType.REMOVE)
     private List<Lecture> lectures;
 
-    public Subject(Long id, String name) {
+    public Subject(Long id, String name, String description) {
         this.id = id;
         this.name = name;
+        this.description = description;
     }
 
     public Subject() {
@@ -49,4 +53,15 @@ public class Subject {
         return lectures;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setLectures(List<Lecture> lectures) {
+        this.lectures = lectures;
+    }
 }

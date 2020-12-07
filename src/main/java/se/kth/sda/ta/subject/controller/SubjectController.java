@@ -32,12 +32,12 @@ public class SubjectController {
     }
 
     @PostMapping("")
-    public Subject create(Subject newSubject) {
+    public Subject create(@RequestBody Subject newSubject) {
         return subjectService.create(newSubject);
     }
 
     @PutMapping("")
-    public Subject update(Subject updatedSubject) {
+    public Subject update(@RequestBody Subject updatedSubject) {
         return subjectService.update(updatedSubject);
     }
 
