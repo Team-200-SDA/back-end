@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/filestorage")
 public class FilestorageController {
 
-        private FilestorageService filestorageService;
+        private final FilestorageService filestorageService;
         private final UserService userService;
         private final AuthService authService;
 
@@ -25,11 +25,12 @@ public class FilestorageController {
         this.authService = authService;
     }
 
-    @GetMapping("")
+         @GetMapping("")
         public List<Filestorage> getAll() {
         User loggedInUser = userService.findUserByEmail(authService.getLoggedInUserEmail());
         return filestorageService.findAllByUser(loggedInUser);
         }
+
         @GetMapping("/{id}")
         public Filestorage getById(@PathVariable Long id) {
             return filestorageService.getById(id)
@@ -42,10 +43,7 @@ public class FilestorageController {
             newFile.setUser(loggedInUser);
             return filestorageService.create(newFile);
         }
-  /*      @PutMapping("")
-        public Filestorage update(@RequestBody Filestorage updateFile) {
-            return filestorageService.update(updateFile);
-        }*/
+
         @DeleteMapping("/{id}")
         public void delete(@PathVariable Long id) {filestorageService.delete(id);
         }

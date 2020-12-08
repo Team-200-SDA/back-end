@@ -1,23 +1,35 @@
 package se.kth.sda.ta.lecture;
 
+import se.kth.sda.ta.subject.model.Subject;
+
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "lectures")
 public class Lecture {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
+    private String fileName;
     private String link;
+    private String publicId;
+    private String type;
 
-    public Lecture() {
+
+    @ManyToOne
+    private Subject subject;
+
+    public Lecture(Long id, String fileName, String link, String publicId, String type, Subject subject) {
+        this.id = id;
+        this.fileName = fileName;
+        this.link = link;
+        this.publicId = publicId;
+        this.type = type;
+        this.subject = subject;
     }
 
-    public Lecture(Long id, String title, String link) {
-        this.id = id;
-        this.title = title;
-        this.link = link;
+    public Lecture() {
     }
 
     public Long getId() {
@@ -28,12 +40,12 @@ public class Lecture {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getFileName() {
+        return fileName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     public String getLink() {
@@ -42,5 +54,29 @@ public class Lecture {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public String getPublicId() {
+        return publicId;
+    }
+
+    public void setPublicId(String publicId) {
+        this.publicId = publicId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 }

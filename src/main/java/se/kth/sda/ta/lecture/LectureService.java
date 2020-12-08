@@ -15,6 +15,10 @@ public class LectureService {
         return repository.findAll();
     }
 
+    public List<Lecture> getAllBySubjectId(Long id) {
+        return repository.findAllBySubject_Id(id);
+    }
+
     public Optional<Lecture> getById(Long id) {
         return repository.findById(id);
     }
