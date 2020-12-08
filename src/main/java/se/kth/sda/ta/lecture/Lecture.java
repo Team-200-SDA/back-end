@@ -1,6 +1,6 @@
 package se.kth.sda.ta.lecture;
 
-import se.kth.sda.ta.user.User;
+import se.kth.sda.ta.subject.model.Subject;
 
 import javax.persistence.*;
 
@@ -16,16 +16,17 @@ public class Lecture {
     private String publicId;
     private String type;
 
-    @ManyToOne
-    private User user;
 
-    public Lecture(Long id, String fileName, String link, String publicId, String type, User user) {
+    @ManyToOne
+    private Subject subject;
+
+    public Lecture(Long id, String fileName, String link, String publicId, String type, Subject subject) {
         this.id = id;
         this.fileName = fileName;
         this.link = link;
         this.publicId = publicId;
         this.type = type;
-        this.user = user;
+        this.subject = subject;
     }
 
     public Lecture() {
@@ -71,11 +72,11 @@ public class Lecture {
         this.type = type;
     }
 
-    public User getUser() {
-        return user;
+    public Subject getSubject() {
+        return subject;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 }
