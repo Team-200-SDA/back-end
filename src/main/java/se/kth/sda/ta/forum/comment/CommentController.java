@@ -50,8 +50,6 @@ public class CommentController {
 
     @PutMapping("")
     public Comment update(@RequestBody Comment updatedComment){
-
-        updatedComment.setUser(extractUserFromAuth());
         return commentService.update(updatedComment);
     }
 
@@ -59,6 +57,7 @@ public class CommentController {
     public void delete(@PathVariable Long id){
         commentService.delete(id);
     }
+
 
     public User extractUserFromAuth()
     {

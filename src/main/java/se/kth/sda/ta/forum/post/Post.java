@@ -4,6 +4,7 @@ import se.kth.sda.ta.user.User;
 
 import javax.persistence.*;
 
+
 @Entity
 public class Post {
 
@@ -12,7 +13,7 @@ public class Post {
     private Long id;
 
     private String title;
-
+    @Column(columnDefinition = "TEXT")
     private String body;
 
     @ManyToOne
