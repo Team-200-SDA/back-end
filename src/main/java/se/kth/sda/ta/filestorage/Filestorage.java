@@ -5,9 +5,10 @@ import se.kth.sda.ta.user.User;
 import javax.persistence.*;
 
 /**
- * This class is a model for File storage
+ * This class is a model for File storage entity
  * It contains fields for files stored by user
- * It contains methods to get and set file details */
+ * and it contains methods to get and set file details
+ * This Filestorage table has relationship with User table */
 
 @Entity
 @Table

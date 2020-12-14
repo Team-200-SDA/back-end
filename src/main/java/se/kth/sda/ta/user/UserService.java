@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * This class is a Service for User
+ * This class is a Service for User entity
  * It contains methods to get user details from user repository and
  * updates user details to user repository */
 

@@ -9,8 +9,8 @@ import se.kth.sda.ta.user.User;
 import se.kth.sda.ta.user.UserService;
 
 /**
- * This class is a Controller for file table
- * It contains methods to get and delete files of current user by file id from file storage repository
+ * This class is a RestController for filestorage table and handles HTTP requests and responses
+ * It contains methods to get and delete files by file id from file storage repository
  * It contains methods to store files to repository through file storage service */
 
 import java.util.List;

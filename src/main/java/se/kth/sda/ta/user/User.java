@@ -10,7 +10,7 @@ import javax.validation.constraints.NotEmpty;
 
 
 /**
- * This class is a model for User table
+ * This class is a model for User entity
  * It contains fields for User details */
 
 @Entity

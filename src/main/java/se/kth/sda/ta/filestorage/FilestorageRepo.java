@@ -7,7 +7,7 @@ import se.kth.sda.ta.user.User;
 import java.util.List;
 
 /** This interface is a Repository which gets and deletes files
- * from database (file storage table) by file id and
+ * from the database (file storage table) by file id and
  * stores files to database (file storage table)  */
 
 @Repository
