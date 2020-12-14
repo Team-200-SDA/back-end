@@ -24,13 +24,13 @@ public class TodoController {
         this.authService = authService;
         this.userService = userService;
     }
-
+//Used annotation to post the data
     @GetMapping("")
     public List<Todo> getTodos() {
         User loggedInUser = userService.findUserByEmail(authService.getLoggedInUserEmail());
         return todoService.findAllByUser(loggedInUser);
     }
-
+// annotation to retrieve the data
     @PostMapping("")
     public Todo create(@RequestBody Todo newTodo) {
         User loggedInUser = userService.findUserByEmail(authService.getLoggedInUserEmail());
@@ -38,6 +38,7 @@ public class TodoController {
         return todoService.create(newTodo);
     }
 
+    //We use this to update the values
     @PutMapping("")
     public Todo update(@RequestBody Todo updatedTodo) {
         return todoService.update(updatedTodo);

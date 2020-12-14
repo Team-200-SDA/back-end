@@ -1,9 +1,9 @@
 package se.kth.sda.ta.todo.model;
-
+import java.util.*;
 import se.kth.sda.ta.user.User;
-
 import javax.persistence.*;
 
+//Using JPA entitiy for making relationship to DB
 @Entity
 @Table(name = "todo")
 public class Todo {

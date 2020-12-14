@@ -7,6 +7,7 @@ import se.kth.sda.ta.user.User;
 
 import java.util.List;
 
+//Used the CRUD operations
 @Repository
 public interface TodoRepository extends JpaRepository<Todo, Long> {
     List<Todo> findAllByUser(User user);
