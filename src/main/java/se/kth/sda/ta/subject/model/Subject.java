@@ -6,6 +6,10 @@ import se.kth.sda.ta.lecture.Lecture;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Subject entity is used for creating Subject by
+ * teacher under which its lectures will be created
+ */
 @Entity
 @Table(name = "subjects")
 public class Subject {
