@@ -4,6 +4,10 @@ import se.kth.sda.ta.user.User;
 
 import javax.persistence.*;
 
+/**
+ * Assignment entity is used for creating assignments by
+ * teacher as well as by students to submit assignments
+ */
 @Entity
 @Table(name = "assignments")
 public class Assignment {

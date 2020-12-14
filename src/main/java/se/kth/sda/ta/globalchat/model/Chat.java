@@ -4,6 +4,7 @@ public class Chat {
     private MessageType type;
     private String content;
     private String sender;
+    private String date;
 
     public enum MessageType {
         CHAT,
@@ -35,4 +36,11 @@ public class Chat {
         this.sender = sender;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 }

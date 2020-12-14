@@ -1,7 +1,10 @@
 package se.kth.sda.ta.news;
 
 import javax.persistence.*;
-
+/**
+ * News entity is used for creating news by
+ * teacher as a school announcements.
+ */
 @Entity
 @Table
 public class News {
