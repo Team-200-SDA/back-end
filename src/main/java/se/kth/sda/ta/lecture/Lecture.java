@@ -4,6 +4,10 @@ import se.kth.sda.ta.subject.model.Subject;
 
 import javax.persistence.*;
 
+/**
+ * Lecture entity is used for creating lectures by
+ * teacher which will be attached to each subject
+ */
 @Entity
 @Table(name = "lectures")
 public class Lecture {
