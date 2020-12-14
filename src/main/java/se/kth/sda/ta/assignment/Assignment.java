@@ -1,6 +1,5 @@
 package se.kth.sda.ta.assignment;
 
-import se.kth.sda.ta.filestorage.Filestorage;
 import se.kth.sda.ta.user.User;
 
 import javax.persistence.*;
@@ -15,16 +14,18 @@ public class Assignment {
     private String link;
     private String publicId;
     private String type;
+    private String dueDate;
 
     @ManyToOne
     private User user;
 
-    public Assignment(Long id, String fileName, String link, String publicId, String type, User user) {
+    public Assignment(Long id, String fileName, String link, String publicId, String type, String dueDate, User user) {
         this.id = id;
         this.fileName = fileName;
         this.link = link;
         this.publicId = publicId;
         this.type = type;
+        this.dueDate = dueDate;
         this.user = user;
     }
 
@@ -77,5 +78,13 @@ public class Assignment {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
     }
 }
