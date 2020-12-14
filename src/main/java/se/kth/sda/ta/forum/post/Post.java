@@ -1,9 +1,11 @@
 package se.kth.sda.ta.forum.post;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import se.kth.sda.ta.user.User;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -19,7 +21,7 @@ public class Post {
     private String body;
 
     @ElementCollection
-    private Set<String> likedUsers;
+    private List<String> likedUsers = new ArrayList<>();
 
     @ManyToOne
     private User user;
@@ -27,7 +29,7 @@ public class Post {
     public Post() {
     }
 
-    public Post(Long id, String title, String body, User user, Set<String> likedUsers) {
+    public Post(Long id, String title, String body, User user, List<String> likedUsers) {
         this.id = id;
         this.title = title;
         this.body = body;
@@ -67,11 +69,11 @@ public class Post {
         this.user = user;
     }
 
-    public Set<String> getLikedUsers() {
+    public List<String> getLikedUsers() {
         return likedUsers;
     }
 
-    public void setLikedUsers(Set<String> likedUsers) {
+    public void setLikedUsers(List<String> likedUsers) {
         this.likedUsers = likedUsers;
     }
 }
