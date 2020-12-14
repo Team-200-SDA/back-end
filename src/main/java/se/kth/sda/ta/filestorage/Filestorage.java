@@ -4,6 +4,11 @@ import se.kth.sda.ta.user.User;
 
 import javax.persistence.*;
 
+/**
+ * This class is a model for File storage
+ * It contains fields for files stored by user
+ * It contains methods to get and set file details */
+
 @Entity
 @Table
 public class Filestorage {

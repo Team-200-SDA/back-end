@@ -8,6 +8,11 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+
+/**
+ * This class is a model for User table
+ * It contains fields for User details */
+
 @Entity
 @Table(name="account")
 public class User {

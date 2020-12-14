@@ -8,6 +8,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This class is a Service for User
+ * It contains methods to get user details from user repository and
+ * updates user details to user repository */
+
 @Service()
 public class UserService {
     @Autowired

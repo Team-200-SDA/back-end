@@ -7,6 +7,11 @@ import se.kth.sda.ta.user.User;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * This class is a Service for file storage
+ * It contains methods to get and delete files from filestorage repository
+ * and stores files to filestorage repository */
+
 @Service
 public class FilestorageService {
 

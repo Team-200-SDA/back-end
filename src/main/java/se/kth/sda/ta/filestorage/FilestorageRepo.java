@@ -6,6 +6,10 @@ import se.kth.sda.ta.user.User;
 
 import java.util.List;
 
+/** This interface is a Repository which gets and deletes files
+ * from database (file storage table) by file id and
+ * stores files to database (file storage table)  */
+
 @Repository
 public interface FilestorageRepo extends JpaRepository<Filestorage, Long> {
     List<Filestorage> findAllByUser(User user);

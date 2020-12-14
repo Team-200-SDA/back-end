@@ -6,6 +6,11 @@ import se.kth.sda.ta.auth.AuthService;
 
 import java.util.List;
 
+/**
+ * This class is a Controller for User table
+ * It contains methods to get user details from user service and auth service
+ * and update user details to user repository through user service */
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
