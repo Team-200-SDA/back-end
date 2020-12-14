@@ -18,6 +18,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
+        user.setRole("student");
         userService.register(user);
         String token = authService.createAuthToken(user.getEmail());
         AuthResponse authResponse = new AuthResponse(token);
