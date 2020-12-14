@@ -19,10 +19,19 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
         userService.register(user);
-
         String token = authService.createAuthToken(user.getEmail());
         AuthResponse authResponse = new AuthResponse(token);
+        return new ResponseEntity<>(authResponse, HttpStatus.CREATED);
+    }
 
+    @PostMapping("/register/{code}")
+    public ResponseEntity<?> registerTeacher(@RequestBody User user, @PathVariable Long code) {
+        if (code == 83224) {
+            user.setRole("teacher");
+        }
+        userService.register(user);
+        String token = authService.createAuthToken(user.getEmail());
+        AuthResponse authResponse = new AuthResponse(token);
         return new ResponseEntity<>(authResponse, HttpStatus.CREATED);
     }
 
