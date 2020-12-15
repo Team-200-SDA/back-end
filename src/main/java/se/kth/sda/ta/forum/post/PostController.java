@@ -14,6 +14,10 @@ import se.kth.sda.ta.user.UserService;
 
 import java.util.List;
 
+/**
+ * This class executes the HTML requests coming from the user
+ * by invoking the methods in PostService class
+ */
 @RestController
 @RequestMapping("/posts")
 public class PostController {
@@ -29,7 +33,7 @@ public class PostController {
         return postService.getAll();
     }
 
-
+    //Returns all posts by post id
     @GetMapping("/{id}")
     public Post getById(@PathVariable Long id){
         return postService.getById(id)
@@ -45,7 +49,6 @@ public class PostController {
     @PutMapping("")
     public Post update(@RequestBody Post updatedPost){
 
-        updatedPost.setUser(extractUserFromAuth());
         return postService.update(updatedPost);
     }
 
@@ -54,7 +57,7 @@ public class PostController {
         postService.delete(id);
     }
 
-
+    // Retrieves the currently authenticated user
     public User extractUserFromAuth()
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

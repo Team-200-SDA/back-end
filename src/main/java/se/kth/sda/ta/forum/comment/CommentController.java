@@ -1,7 +1,6 @@
 package se.kth.sda.ta.forum.comment;
 
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -15,6 +14,10 @@ import se.kth.sda.ta.user.UserService;
 
 import java.util.List;
 
+/**
+ * This class executes the HTML requests coming from the user
+ * by invoking the methods in CommentService class
+ */
 @RestController
 @RequestMapping("/comments")
 public class CommentController {
@@ -42,6 +45,7 @@ public class CommentController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    //Receives the new comment and assigns the logged-in user as the user of the comment
     @PostMapping("")
     public Comment create(@RequestBody Comment newComment){
         newComment.setUser(extractUserFromAuth());

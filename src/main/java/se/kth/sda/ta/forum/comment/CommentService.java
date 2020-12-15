@@ -2,11 +2,15 @@ package se.kth.sda.ta.forum.comment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import se.kth.sda.ta.forum.post.Post;
 
 import java.util.List;
 import java.util.Optional;
 
+
+/**
+ * This class is a Service for Comment entity
+ * It contains methods to get and delete files from Comment repository
+ * and stores comments to Comment repository */
 @Service
 public class CommentService {
 
