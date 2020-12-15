@@ -1,11 +1,14 @@
 package se.kth.sda.ta.forum.comment;
-
 import se.kth.sda.ta.forum.post.Post;
 import se.kth.sda.ta.user.User;
 
 import javax.persistence.*;
 
 
+/**
+ * Comment entity is used for creating comments in relation to posts by
+ * the users under the forum page
+ */
 @Entity
 public class Comment {
 
